@@ -44,6 +44,15 @@ class MagasinTest {
         app.updateQuality();
         assertEquals(28, app.items[0].quality);
     }
-    
+
+    @Test
+    void TestDateOutOfLimite()
+    {
+        Item[] items = new Item [] {new Item( "Test",-1,30)};
+        Magasin app = new Magasin(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);//Le qualité du produit ne diminue pas de *2
+    }
+
 
 }
