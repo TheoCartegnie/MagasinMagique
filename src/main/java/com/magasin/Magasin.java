@@ -8,15 +8,15 @@ class Magasin {
     }
 
     public void updateQuality() {
-        for (int i = 0; i < items.length; i++)
+        for (int i = 0; i < items.length; i++)//On parcours la boucle
 
         {
     //////////////////////////////////////////STEP 1///////////////////////////////////////////////////////////////
-            if (!items[i].name.equals("Comté") && !items[i].name.equals("Pass VIP Concert"))
+            if (!items[i].name.equals("Comté") && !items[i].name.equals("Pass VIP Concert"))/*Si ce n'est NI du compté NI Une place de concert VIP*/
             {
-                if (items[i].quality > 0) {
-                    if (!items[i].name.equals("Kryptonite")) {
-                        items[i].quality = items[i].quality - 1;
+                if (items[i].quality > 0)/*La qualité est au dessus de 0*/ {
+                    if (!items[i].name.equals("Kryptonite"))/*Ce n'est pas de la Kryptonite*/ {
+                        items[i].quality = items[i].quality - 1;/*La qualité du l'objet baisse*/
                     }
                 }
 
@@ -25,19 +25,19 @@ class Magasin {
             else
 
             {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+                if (items[i].quality < 50)/*SI c'est du comté ou un passe VIP*/ {
+                    items[i].quality = items[i].quality + 1;//La qualité du produits augemente
 
-                    if (items[i].name.equals("Pass VIP Concert")) {
-                        if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                    if (items[i].name.equals("Pass VIP Concert")) {/*Si l'objet est un passe VIP*/
+                        if (items[i].sellIn < 11)/*Que l'objet a moins de 11 jours*/ {
+                            if (items[i].quality < 50)/*Que l'objet a une qualité inferieur a 50 ?*/ {
+                                items[i].quality = items[i].quality + 1;/*L'objet prend 1  de qualité (censé en prendre plus)*/
                             }
                         }
 
-                        if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
+                        if (items[i].sellIn < 6) {/*L'objets a moins de 6 jours*/
+                            if (items[i].quality < 50) {/*L'objet a une qualité inferieur a 50 ?*/
+                                items[i].quality = items[i].quality + 1;/*La qualité prend plus 1*/
                             }
                         }
                     }
