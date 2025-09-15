@@ -64,7 +64,8 @@ class MagasinTest {
 
     @Test
     void TestDateVIP() {
-        Item[] items = new Item [] {new Item( "Pass VIP Concert",5,10)};
+        Item[] items = new Item [] {new Item( "Pass VIP Concert",4,10
+        )};
         Magasin app = new Magasin(items);
         app.updateQuality();
         assertEquals(13, app.items[0].quality);
@@ -73,6 +74,25 @@ class MagasinTest {
         * */
 
     }
+
+    @Test
+    void PassVIPTest() {
+        Item[] items = new Item [] {new Item( "Pass VIP Concert",9,10
+        )};
+        Magasin app = new Magasin(items);
+        app.updateQuality();
+        assertEquals(12, app.items[0].quality);
+    }
+
+    @Test
+    void PassDateConcert() {
+        Item[] items = new Item [] {new Item( "Pass VIP Concert",0,10
+        )};
+        Magasin app = new Magasin(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+    }
+
     @Test
     void TestItemQuality()
     {
@@ -128,5 +148,11 @@ class MagasinTest {
         assertEquals(50, app.items[0].quality);
     }
 
-
+    @Test
+    void KryptoniteTest() {
+        Item[] items = new Item [] {new Item("Kryptonite", 15, 80)};
+        Magasin app = new Magasin(items);
+        app.updateQuality();
+        assertEquals(80, app.items[0].quality);
+    }
 }
