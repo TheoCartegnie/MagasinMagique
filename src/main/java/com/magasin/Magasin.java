@@ -1,5 +1,8 @@
 package com.magasin;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Magasin {
     Item[] items;
 
@@ -22,10 +25,11 @@ class Magasin {
 
             }
 
-            else
+            else/*SI c'est du comté ou un passe VIP*/
 
             {
-                if (items[i].quality < 50)/*SI c'est du comté ou un passe VIP*/ {
+                if (items[i].quality < 50)/*Si la qualité de l'objet est inférieur a 50*/
+                    {
                     items[i].quality = items[i].quality + 1;//La qualité du produits augemente
 
                     if (items[i].name.equals("Pass VIP Concert")) {/*Si l'objet est un passe VIP*/
@@ -51,7 +55,7 @@ class Magasin {
             if (items[i].sellIn < 0)/*Si on arrive a la date de peremption*/ {
                 if (!items[i].name.equals("Comté"))/*Et que l'objet n'est pas du fromage*/ {
                     if (!items[i].name.equals("Pass VIP Concert"))/*Ni un Pass VIP de concert*/ {
-                        if (items[i].quality > 0)/*Si il reste des objets*/ {
+                        if (items[i].quality > 0)/*Si les objets sont tojours de qualité*/ {
                             if (!items[i].name.equals("Kryptonite"))/*Et que ce n'est pas de la kryptonite*/ {
                                 items[i].quality = items[i].quality - 1;/*L'objet perds en qualité*/
                             }
@@ -68,4 +72,17 @@ class Magasin {
             }
         }
     }
+
+    public void PrintItems(int day, Item item [])
+    {
+        System.out.println("============================================================================================================");
+        System.out.println("Current Day : " + day);
+        for(int i = 0; i < items.length; i++) {
+            System.out.println("Name : " + items[i].name + " || " + "Item sellin  " + items[i].sellIn + " (" + (items[i].sellIn - item[i].sellIn) + ")" + " || " + "Item Quality " + items[i].quality + " (" + (items[i].quality - item[i].quality) +")");
+
+        }
+
+        System.out.println("============================================================================================================");
+    }
+
 }
